@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,14 @@ namespace JavaEyes
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Process> javas;
+        private List<ProcessEye> javas;
+        private string criteria = "";
 
         public MainWindow()
         {
-            javas = new List<Process>();
+            javas = new List<ProcessEye>();
             InitializeComponent();
-            //CountJava();
+            CountJava();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(CountJava);
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -38,25 +40,34 @@ namespace JavaEyes
 
         public void CountJava()
         {
-            javas = new List<Process>();
+            criteria = Criteria.Text;
+            javas = new List<ProcessEye>();
             Process[] processes = Process.GetProcesses();
             long ram = 0;
             foreach (Process p in processes)
             {
-                if (p.ProcessName.Contains("java"))
+                if (p.ProcessName.Contains(criteria))
                 {
-                    javas.Add(p);
+                    javas.Add(new ProcessEye(p));
                     ram += p.WorkingSet64;
                 }
             }
             CountBox.Content = javas.Count;
-            RamLabel.Content = String.Format("{0} MB RAM", ram / 1048576);
-            ProcessList.DataContext = javas;
+            RamLabel.Content = String.Format("{0:n0} MB RAM", ram / 1048576.0);
+            ProcessList_Initialized(null, null);
         }
 
         private void CountJava(object sender, EventArgs e)
         {
             CountJava();
+        }
+
+        private void ProcessList_Initialized(object sender, EventArgs e)
+        {
+            ProcessList.ItemsSource = javas;
+            var sortColumn = ProcessList.Columns[2];
+            sortColumn.SortDirection = ListSortDirection.Descending;
+            ProcessList.Items.SortDescriptions.Add(new SortDescription(sortColumn.SortMemberPath, ListSortDirection.Descending));
         }
     }
 }
