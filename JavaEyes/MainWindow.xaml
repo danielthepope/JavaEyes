@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="JavaEyes" Height="350" Width="525" MinHeight="350" MinWidth="525" Icon="icon.ico">
     <Grid>
-        <Label Name="CountBox" Content="n" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Height="97" Width="233" FontFamily="Segoe UI Light" FontSize="72"/>
+        <Label Name="CountBox" Content="n" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="97" Width="136" FontFamily="Segoe UI Light" FontSize="72"/>
         <DataGrid Name="ProcessList" Margin="248,10,10,10" Initialized="ProcessList_Initialized" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Process name" Width="*" CanUserResize="False" Binding="{Binding Name}" />
@@ -12,11 +12,13 @@
                 <DataGridTextColumn Binding="{Binding RamString}" Header="RAM" Width="70" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Name="RamLabel" Content="RAM" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="67" Width="233" FontSize="22"/>
-        <TextBox Name="Criteria" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" TextWrapping="Wrap" Text="java" VerticalAlignment="Top" Width="233" FontSize="16"/>
-        <Rectangle Name="TotalRam" Fill="#FFFFFFFF" HorizontalAlignment="Left" Height="42" Margin="10,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="233" ToolTip="Available RAM"/>
-        <Rectangle Name="RamInUse" Fill="#FFF4F4F4" HorizontalAlignment="Left" Height="42" Margin="10,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="193" ToolTip="Total RAM used by system"/>
-        <Rectangle Name="CriteriaRam" Fill="#FFCCCCF4" HorizontalAlignment="Left" Height="42" Margin="10,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="143" ToolTip="RAM used by selected processes"/>
+        <Label Name="RamLabel" Content="RAM" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Height="38" Width="233" FontSize="22"/>
+        <TextBox Name="Criteria" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" TextWrapping="Wrap" Text="java" VerticalAlignment="Top" Width="233" FontSize="16" KeyUp="Criteria_KeyUp"/>
+        <Rectangle Name="TotalRam" Fill="#FFFFFFFF" HorizontalAlignment="Left" Height="42" Margin="10,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="233" ToolTip="Available RAM"/>
+        <Rectangle Name="RamInUse" Fill="#FFF4F4F4" HorizontalAlignment="Left" Height="42" Margin="10,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="95" ToolTip="Total RAM used by system"/>
+        <Rectangle Name="CriteriaRam" Fill="#FFCCCCF4" HorizontalAlignment="Left" Height="42" Margin="10,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="32" ToolTip="RAM used by selected processes"/>
+        <Label Name="ProcessLabel" Content="processes" HorizontalAlignment="Left" Margin="146,110,0,0" VerticalAlignment="Top" Width="97" Height="34" FontSize="16"/>
+        <Label Name="AvailableRamLabel" Content="Available" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Width="233"/>
 
     </Grid>
 </Window>
