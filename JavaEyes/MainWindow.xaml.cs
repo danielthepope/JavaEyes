@@ -24,6 +24,8 @@ namespace JavaEyes
             javas = new List<ProcessEye>();
             totalRam = new ComputerInfo().TotalPhysicalMemory;
             InitializeComponent();
+            Criteria.Focus();
+            Criteria.SelectAll();
             AvailableRamLabel.Content = String.Format("Total RAM: {0:n0}MB", totalRam / 1048576.0);
             CountJava();
             DispatcherTimer timer = new DispatcherTimer();
