@@ -26,7 +26,7 @@ namespace JavaEyes
             InitializeComponent();
             Criteria.Focus();
             Criteria.SelectAll();
-            AvailableRamLabel.Content = String.Format("Total RAM: {0:n0}MB", totalRam / 1048576.0);
+            TotalRamLabel.Content = String.Format("Total RAM: {0:n0}MB", totalRam / 1048576.0);
             CountJava();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(CountJava);
@@ -64,6 +64,7 @@ namespace JavaEyes
         private void UpdateGraph(long ram)
         {
             ulong availableRam = new ComputerInfo().AvailablePhysicalMemory;
+            AvailableRamLabel.Content = String.Format("Available RAM: {0:n0}MB", availableRam / 1048576.0);
             double bytesPerPixel = ((double)totalRam / (double)TotalRam.Width);
             RamInUse.Width = (totalRam - availableRam) / bytesPerPixel;
             CriteriaRam.Width = ram / bytesPerPixel;

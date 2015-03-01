@@ -19,6 +19,7 @@
         <Rectangle Name="CriteriaRam" Fill="#FFCCCCF4" HorizontalAlignment="Left" Height="42" Margin="10,195,0,0" Stroke="Black" VerticalAlignment="Top" Width="32" ToolTip="RAM used by selected processes"/>
         <Label Name="ProcessLabel" Content="processes" HorizontalAlignment="Left" Margin="146,110,0,0" VerticalAlignment="Top" Width="97" Height="34" FontSize="16"/>
         <Label Name="AvailableRamLabel" Content="Available" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Width="233"/>
+        <Label Name="TotalRamLabel" Content="Total" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Width="233"/>
 
     </Grid>
 </Window>
